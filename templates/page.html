@@ -1,0 +1,99 @@
+<!--
+    DO NOT CHANGE
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Site Bias Analysis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+body {
+  font-family: Arial;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  color: white;
+  text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+<h1>Site Bias Analysis</h1>
+
+<p> Enter a website URL and get the site bias score </p>
+<!-- Load icon library -->
+<img src="/static/search_icon.png" alt="" style="width:128px;height:128px;">
+
+<form class="example" action="#" action="@{/search}" object="${searchKey}" method="post"
+      style="margin:auto;max-width:300px">
+    <input type="text" placeholder="Enter URL" name="search" field="*{phrase}">
+    <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<section if="${hasResult}">
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>Result</h3>
+    <div if="${emptyResult}">
+        <p text="'Could not find article for URL: ' + ${phrase}"/>
+    </div>
+    <div if="${!emptyResult}">
+        <p text="'Found: ' + ${phrase} + ' in document ' + ${searchResult}"/>
+        <br>
+        <p text="'My search took ' + ${searchTime} + ' nanoseconds.'"/>
+        <p text="'Naive search took ' + ${naiveSearchTime} + ' nanoseconds.'"/>
+    </div>
+
+</section>
+<div class="footer">
+    <p>UW Bothell BCORE 118, by Manuel Braje</p>
+</div>
+</body>
+</html>
