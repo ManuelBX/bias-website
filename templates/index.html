@@ -65,35 +65,33 @@ form.example::after {
 <body>
 <h1>Site Bias Analysis</h1>
 
-<p> Enter a website URL and get the site bias score </p>
 <!-- Load icon library -->
 <img src="/static/search_icon.png" alt="" style="width:128px;height:128px;">
 
-<form class="example" action="#" action="@{/search}" object="${searchKey}" method="post"
-      style="margin:auto;max-width:300px">
-    <input type="text" placeholder="Enter URL" name="search" field="*{phrase}">
-    <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+<br>
 
-<section if="${hasResult}">
-    <br>
-    <br>
-    <br>
-    <hr>
-    <h3>Result</h3>
-    <div if="${emptyResult}">
-        <p text="'Could not find article for URL: ' + ${phrase}"/>
-    </div>
-    <div if="${!emptyResult}">
-        <p text="'Found: ' + ${phrase} + ' in document ' + ${searchResult}"/>
-        <br>
-        <p text="'My search took ' + ${searchTime} + ' nanoseconds.'"/>
-        <p text="'Naive search took ' + ${naiveSearchTime} + ' nanoseconds.'"/>
-    </div>
+    <form action="{{ url_for('index') }}" method="post">
+        <label for="url">Enter a website URL:</label>
+        <input type="text" id="url" name="url">
+        <input type="submit" value="Get Bias Score">
+    </form>
 
-</section>
-<div class="footer">
+<br>
+<br>
+
+    {% if not result %}
+        <h2>Result</h2>
+        <p> Could not find URL </p>
+    {% endif %}
+
+    {% if result %}
+        <h2>Result</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+
+    <div class="footer">
     <p>UW Bothell BCORE 118, by Manuel Braje</p>
-</div>
+    </div>
+
 </body>
 </html>
