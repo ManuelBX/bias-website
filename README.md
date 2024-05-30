@@ -30,32 +30,32 @@ Clone github repository
 Install Python 3.9 or higher
 
 Install the flask and openai libraries by running the following commands
-'''
+```
 python -m pip install --upgrade pip
 pip install flask openai
-'''
+```
 
 Create file OPENAI_API_KEY.env with your own project key
 or
 Replace client line 6-8 with:
-'''
+```
 os.environ["OPENAI_API_KEY"] = "YOUR_KEY_HERE"
 client = OpenAI()
-'''
+```
 Alternatively you can set the project key globally on your machine by following this comment
 https://community.openai.com/t/open-ai-error-key-not-found/15577/2 
 
 Then, run the website locally by running the following command in your terminal
-'''
+```
 flask --app app run
-'''
+```
 
 Finally, click the port that it was opened on (usually http://127.0.0.1:5000) and use the website!
 
 Optionally, you can experiment with different OpenAI models by replacing the line in the response call
-'''
+```
 model="gpt-3.5-turbo"
-'''
+```
 with any of the models mentioned in the documentation (https://platform.openai.com/docs/models)
 
 ### Credits
