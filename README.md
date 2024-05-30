@@ -6,7 +6,7 @@
 This site uses OpenAI's API to give a linked URL a site bias score along with a brief description on why the score was given.
 
 ### Tech used
-Flask, Python, OpenAI API
+Flask, Python, OpenAI API, HTML
 
 ### Challenges faced
 
